@@ -1,6 +1,6 @@
-package net.fabricmc.InOvaClient.mixin;
+package net.fabricmc.example.mixin;
 
-import net.fabricmc.InOvaClient.InOvaMain;
+import net.fabricmc.example.ExampleMod;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ExampleMixin {
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info) {
-		InOvaMain.LOGGER.info("This line is printed by an example mod mixin!");
+		ExampleMod.LOGGER.info("This line is printed by an example mod mixin!");
 	}
 }
