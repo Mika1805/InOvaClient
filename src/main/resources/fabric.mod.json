@@ -3,10 +3,11 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "InOvaClient",
+  "description": "Best Cheats for 1.19.4",
   "authors": [
-    "Me!"
+    "Cxiy",
+    "TurtleRetard"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.fabricmc.InOvaClient.InOvaMain"
     ]
   },
   "mixins": [
