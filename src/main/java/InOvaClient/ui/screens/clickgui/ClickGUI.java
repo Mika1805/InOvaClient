@@ -21,7 +21,7 @@ public class ClickGUI extends Screen {
 
         int offset = 20;
         for (Category category : Category.values()) {
-            frames.add(new Frame(category, offset, 25, 100, 30));
+            frames.add(new Frame(category, offset, 20, 100, 20));
             offset += 120;
         }
     }

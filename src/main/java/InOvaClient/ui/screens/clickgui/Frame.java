@@ -15,7 +15,7 @@ public class Frame {
     public int x, y, width, height, dragX, dragY;
     public Category category;
 
-    public boolean dragging;
+    public boolean dragging, extended;
 
     private List<ModuleButton> buttons;
     protected MinecraftClient mc = MinecraftClient.getInstance();
@@ -26,6 +26,7 @@ public class Frame {
         this.width = width;
         this.height = height;
         this.dragging = false;
+        this.extended = false;
 
         buttons = new ArrayList<>();
 
@@ -37,20 +38,29 @@ public class Frame {
     }
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         DrawableHelper.fill(matrices, x, y, x + width, y + height, new Color(30, 0, 49, 195).getRGB());
-        mc.textRenderer.drawWithShadow(matrices, category.name, x + 2, y + 2, Color.MAGENTA.getRGB());
+        mc.textRenderer.drawWithShadow(matrices, category.name, x + 2, y + ((height / 2) - mc.textRenderer.fontHeight / 2), Color.MAGENTA.getRGB());
+        mc.textRenderer.drawWithShadow(matrices, extended ? "[-]" : "[+]", x + width - 8 - mc.textRenderer.getWidth("[+]"), y + ((height / 2) - mc.textRenderer.fontHeight / 2), Color.MAGENTA.getRGB());
 
-        for (ModuleButton button : buttons) {
+        if (extended) {
+            for (ModuleButton button : buttons) {
             button.render(matrices, mouseX, mouseY, delta);
+        }
         }
     }
     public void mouseClicked(double mouseX, double mouseY, int button) {
-        if (isHovered(mouseX, mouseY) && button == 0) {
-            dragging = true;
-            dragX = (int) (mouseX - x);
-            dragY = (int) (mouseY - y);
+        if (isHovered(mouseX, mouseY)) {
+            if (button == 0) {
+                dragging = true;
+                dragX = (int) (mouseX - x);
+                dragY = (int) (mouseY - y);
+            } else if (button == 1) {
+                extended = !extended;
+            }
         }
-        for (ModuleButton mb : buttons) {
-            mb.mouseClicked(mouseX, mouseY, button);
+        if (extended){
+            for (ModuleButton mb : buttons) {
+                mb.mouseClicked(mouseX, mouseY, button);
+        }
         }
     }
     public void mouseReleased(double mouseX, double mouseY, int button) {
