@@ -2,6 +2,7 @@ package InOvaClient.module;
 
 import InOvaClient.module.movement.*;
 
+import InOvaClient.module.Mod.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,16 @@ public class ModuleManager {
             if (module.isEnabled()) enabled.add(module);
         }
         return enabled;
+    }
+
+    public List<Mod> getModuleInCategory(Category category) {
+        List<Mod> categoryModules = new ArrayList<>();
+        for (Mod mod : modules) {
+            if (mod.getCategory() == category) {
+                categoryModules.add(mod);
+            }
+        }
+        return categoryModules;
     }
     private void addModules() {
         modules.add(new Flight());

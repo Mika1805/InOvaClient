@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClickGUI extends Screen {
+
     public static final ClickGUI INSTANCE = new ClickGUI();
 
     private List<Frame> frames;
+
     private ClickGUI() {
         super(Text.literal("Click GUI"));
 
@@ -28,7 +30,7 @@ public class ClickGUI extends Screen {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         for (Frame frame : frames) {
             frame.render(matrices, mouseX, mouseY, delta);
-            frame.updatePosition(mouseX, (double) mouseY);
+            frame.updatePosition(mouseX, mouseY);
         }
         super.render(matrices, mouseX, mouseY, delta);
     }
@@ -49,4 +51,3 @@ public class ClickGUI extends Screen {
         return super.mouseReleased(mouseX, mouseY, button);
     }
 }
-
