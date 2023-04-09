@@ -13,5 +13,5 @@ public class Client implements ModInitializer {
 
         logger.info("Hello World");
     }
-    
+
 }
