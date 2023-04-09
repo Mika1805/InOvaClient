@@ -27,6 +27,7 @@ public class ModuleManager {
     private void addModules() {
         modules.add(new Flight());
         modules.add(new Sprint());
+        modules.add(new AutoSwim());
 
     }
 }

@@ -2,6 +2,7 @@ package InOvaClient;
 
 import InOvaClient.module.Mod;
 import InOvaClient.module.ModuleManager;
+import InOvaClient.ui.screens.clickgui.ClickGUI;
 import net.minecraft.client.MinecraftClient;
 import net.fabricmc.api.ModInitializer;
 
@@ -25,6 +26,7 @@ public class Client implements ModInitializer {
             for (Mod module : ModuleManager.INSTANCE.getModules()) {
                 if (key == module.getKey()) module.toggle();
             }
+            if (key == GLFW.GLFW_KEY_RIGHT_SHIFT) mc.setScreen(ClickGUI.INSTANCE);
         }
     }
     public void onTick() {
