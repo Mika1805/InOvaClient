@@ -7,6 +7,8 @@ import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class Hud {
@@ -20,7 +22,11 @@ public class Hud {
         int sWidth = mc.getWindow().getScaledWidth();
         int sHeight = mc.getWindow().getScaledHeight();
 
-        for (Mod mod : ModuleManager.INSTANCE.getEnabledModules()) {
+        List<Mod> enabled = ModuleManager.INSTANCE.getEnabledModules();
+
+        enabled.sort(Comparator.comparingInt(m -> mc.textRenderer.getWidth(((Mod)m).getDisplayName())).reversed());
+
+        for (Mod mod : enabled) {
             mc.textRenderer.drawWithShadow(matrices, mod.getDisplayName(), (sWidth - 4) - mc.textRenderer.getWidth(mod.getDisplayName()), 10 + (index * mc.textRenderer.fontHeight), Color.ORANGE.getRGB());
             index++;
         }
