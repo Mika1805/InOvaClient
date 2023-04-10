@@ -2,6 +2,7 @@ package InOvaClient.ui.screens.clickgui.setting;
 
 import InOvaClient.module.settings.Setting;
 import InOvaClient.ui.screens.clickgui.ModuleButton;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 
 import java.awt.*;
@@ -11,6 +12,8 @@ public class Component {
     public Setting setting;
     public  ModuleButton parent;
     public int offset;
+
+    protected MinecraftClient mc = MinecraftClient.getInstance();
 
     public Component(Setting setting, ModuleButton parent, int offset) {
         this.setting = setting;

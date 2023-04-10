@@ -9,8 +9,8 @@ import org.lwjgl.glfw.GLFW;
 
 public class Flight extends Mod {
 
-    public NumberSetting speed = new NumberSetting("speed", 0, 10, 1, 0.1);
-    public BooleanSetting testBool = new BooleanSetting("check", true);
+    public NumberSetting speed = new NumberSetting("Speed", 0, 10, 1, 0.1);
+    public BooleanSetting testBool = new BooleanSetting("Check", true);
     public ModeSetting testMode = new ModeSetting("Mode", "Test", "test", "test 2", "test 3");
 
     public Flight() {
