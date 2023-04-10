@@ -1,6 +1,10 @@
 package InOvaClient.module;
 
+import InOvaClient.module.settings.Setting;
 import net.minecraft.client.MinecraftClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Mod {
     private String name;
@@ -10,6 +14,8 @@ public abstract class Mod {
     private int key;
     private boolean enabled;
 
+    private List<Setting> settings = new ArrayList<>();
+
     protected MinecraftClient mc = MinecraftClient.getInstance();
 
     public Mod(String name, String description, Category category) {
@@ -18,6 +24,18 @@ public abstract class Mod {
         this.description = description;
         this.category = category;
 
+    }
+
+    public List<Setting> getSettings() {
+        return settings;
+    }
+
+    public void addSetting(Setting setting) {
+        settings.add(setting);
+    }
+
+    public void addSettings(Setting... settings ) {
+        for (Setting setting : settings) addSetting(setting);
     }
 
     public void toggle() {
