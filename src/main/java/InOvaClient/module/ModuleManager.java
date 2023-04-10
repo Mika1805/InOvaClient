@@ -1,6 +1,8 @@
 package InOvaClient.module;
 
 import InOvaClient.module.movement.*;
+import InOvaClient.module.combat.*;
+import InOvaClient.module.exploit.*;
 
 import InOvaClient.module.Mod.Category;
 
@@ -39,6 +41,9 @@ public class ModuleManager {
         modules.add(new Flight());
         modules.add(new Sprint());
         modules.add(new AutoSwim());
+        modules.add(new AutoRespawn());
+        modules.add(new SilentSneak());
+        modules.add(new Test());
 
     }
 }
