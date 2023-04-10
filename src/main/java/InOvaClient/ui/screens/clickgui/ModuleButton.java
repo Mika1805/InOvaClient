@@ -15,19 +15,16 @@ import net.minecraft.client.util.math.MatrixStack;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 public class ModuleButton {
     public Mod module;
     public Frame parent;
     public int offset;
     public List<Component> components;
-    public boolean extended;
-    public ModuleButton(Mod module, Frame parent, int offset) {
+    public ModuleButton(Mod module,Frame parent, int offset) {
         this.module = module;
         this.parent = parent;
         this.offset = offset;
-        this.extended = false;
         this.components = new ArrayList<>();
 
         int setOffset = offset;
@@ -44,31 +41,21 @@ public class ModuleButton {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         DrawableHelper.fill(matrices, parent.x, parent.y + offset, parent.x + parent.width, parent.y + offset + parent.height, new Color(77, 0, 128, 60).getRGB());
         if (isHovered(mouseX, mouseY)) DrawableHelper.fill(matrices, parent.x, parent.y + offset, parent.x + parent.width, parent.y + offset + parent.height, new Color(77, 0, 128, 60).getRGB());
-
         int textOffset = ((parent.height / 2) - parent.mc.textRenderer.fontHeight / 2);
         parent.mc.textRenderer.drawWithShadow(matrices, module.getName(), parent.x + textOffset, parent.y + offset + textOffset,module.isEnabled() ? Color.PINK.getRGB() : Color.WHITE.getRGB());
-
-        if (extended) {
-            for (Component component : components) {
-                component.render(matrices, mouseX, mouseY, delta);
-            }
-        }
     }
     public void mouseClicked(double mouseX, double mouseY, int button) {
         if (isHovered(mouseX, mouseY)) {
             if (button == 0) {
                 module.toggle();
-            } else if (button == 1) {
-                extended = !extended;
-                parent.updateButtons();
+            } else {
+
             }
         }
     }
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
-        for (Component component : components) {
-        component.mouseClicked(mouseX, mouseY, button);
-        }
+        
     }
     public boolean isHovered(double mouseX, double mouseY) {
         return mouseX > parent.x && mouseX < parent.x + parent.width && mouseY > parent.y + offset && mouseY < parent.y + offset + parent.height;
