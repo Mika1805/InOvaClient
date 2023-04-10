@@ -9,10 +9,12 @@ public class Test extends Mod {
         super("Test", "U Lazzy ass", Category.COMBAT);
         this.setKey(GLFW.GLFW_KEY_B);
     }
+    
 
     @Override
     public void onTick() {
-        if (mc.player.isSleeping()) mc.player.wakeUp();
+        originalgamma = mc.gameSettings.gammaSetting;
+        mc.gameSettings.gammaSetting = 1.5999999E7F;
         super.onTick();
     }
 }
