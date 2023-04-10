@@ -3,6 +3,7 @@ package InOvaClient.ui.screens.clickgui;
 import InOvaClient.module.Mod;
 import InOvaClient.module.Mod.Category;
 import InOvaClient.module.ModuleManager;
+import InOvaClient.ui.screens.clickgui.setting.Component;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -78,6 +79,21 @@ public class Frame {
         if (dragging) {
             x = (int) (mouseX - dragX);
             y = (int) (mouseY - dragY);
+        }
+    }
+
+    public void updateButtons() {
+        int offset = height;
+
+        for (ModuleButton button : buttons) {
+            button.offset = offset;
+            offset += height;
+
+            if (button.extended) {
+                for (Component component : button.components) {
+                    if (component.setting.isVisible()) offset += height;
+                }
+            }
         }
     }
 }
