@@ -1,10 +1,11 @@
 package InOvaClient.module;
 
+import InOvaClient.module.combat.Test;
 import InOvaClient.module.movement.*;
-import InOvaClient.module.combat.*;
 import InOvaClient.module.exploit.*;
 
 import InOvaClient.module.Mod.Category;
+import InOvaClient.module.render.AntiFireRender;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,7 @@ public class ModuleManager {
         modules.add(new AutoSwim());
         modules.add(new AutoRespawn());
         modules.add(new SilentSneak());
+        modules.add(new AntiFireRender());
         modules.add(new Test());
 
     }
