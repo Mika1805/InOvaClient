@@ -26,6 +26,9 @@ public class Component {
     public void mouseClicked(double mouseX, double mouseY, int button) {
 
     }
+    public void mouseReleased(double mouseX, double mouseY, int button) {
+
+    }
 
     public boolean isHovered(double mouseX, double mouseY) {
         return mouseX > parent.parent.x && mouseX < parent.parent.x + parent.parent.width && mouseY > parent.parent.y + parent.offset + parent.offset + offset && mouseY < parent.parent.y + parent.offset + offset+ parent.parent.height;
