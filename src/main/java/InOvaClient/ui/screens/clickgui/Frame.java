@@ -38,10 +38,8 @@ public class Frame {
     }
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         DrawableHelper.fill(matrices, x, y, x + width, y + height, new Color(30, 0, 49, 195).getRGB());
-        int offset = ((height / 2) - mc.textRenderer.fontHeight / 2);
-        
-        mc.textRenderer.drawWithShadow(matrices, category.name, x + offset, y + offset, Color.MAGENTA.getRGB());
-        mc.textRenderer.drawWithShadow(matrices, extended ? "[-]" : "[+]", x + width - offset - 2 - mc.textRenderer.getWidth("[+]"), y + offset, Color.MAGENTA.getRGB());
+        mc.textRenderer.drawWithShadow(matrices, category.name, x + ((height / 2) - mc.textRenderer.fontHeight / 2), y + ((height / 2) - mc.textRenderer.fontHeight / 2), Color.MAGENTA.getRGB());
+        mc.textRenderer.drawWithShadow(matrices, extended ? "[-]" : "[+]", x + width - ((height / 2) - mc.textRenderer.fontHeight / 2) - 2 - mc.textRenderer.getWidth("[+]"), y + ((height / 2) - mc.textRenderer.fontHeight / 2), Color.MAGENTA.getRGB());
 
         if (extended) {
             for (ModuleButton button : buttons) {
