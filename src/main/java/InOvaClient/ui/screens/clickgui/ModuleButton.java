@@ -18,7 +18,9 @@ public class ModuleButton {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         DrawableHelper.fill(matrices, parent.x, parent.y + offset, parent.x + parent.width, parent.y + offset + parent.height, new Color(77, 0, 128, 60).getRGB());
         if (isHovered(mouseX, mouseY)) DrawableHelper.fill(matrices, parent.x, parent.y + offset, parent.x + parent.width, parent.y + offset + parent.height, new Color(77, 0, 128, 60).getRGB());
-    parent.mc.textRenderer.drawWithShadow(matrices, module.getName(), parent.x +2, parent.y + offset + 2,module.isEnabled() ? Color.PINK.getRGB() : Color.WHITE.getRGB());
+        int textOffset = ((parent.height / 2) - parent.mc.textRenderer.fontHeight / 2);
+
+        parent.mc.textRenderer.drawWithShadow(matrices, module.getName(), parent.x + textOffset, parent.y + offset + textOffset, module.isEnabled() ? Color.PINK.getRGB() : Color.WHITE.getRGB());
     }
     public void mouseClicked(double mouseX, double mouseY, int button) {
         if (isHovered(mouseX, mouseY)) {
