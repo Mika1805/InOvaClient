@@ -34,7 +34,7 @@ public abstract class Mod {
         settings.add(setting);
     }
 
-    public void addSettings(Setting... settings) {
+    public void addSettings(Setting... settings ) {
         for (Setting setting : settings) addSetting(setting);
     }
 

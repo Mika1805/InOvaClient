@@ -39,7 +39,6 @@ public class ModuleButton {
             } else if (setting instanceof NumberSetting) {
                 components.add(new Slider(setting, this, setOffset));
             }
-            setOffset += parent.height;
         }
     }
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -64,15 +63,11 @@ public class ModuleButton {
                 parent.updateButtons();
             }
         }
-
-        for (Component component : components) {
-            component.mouseClicked(mouseX, mouseY, button);
-        }
     }
 
     public void mouseReleased(double mouseX, double mouseY, int button) {
         for (Component component : components) {
-        component.mouseReleased(mouseX, mouseY, button);
+        component.mouseClicked(mouseX, mouseY, button);
         }
     }
     public boolean isHovered(double mouseX, double mouseY) {
