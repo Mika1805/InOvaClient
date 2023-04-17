@@ -20,8 +20,8 @@ public class Test extends Mod {
 
     @Override
     public void onTick() {
-        mc.player.lookAt(EntityAnchorArgumentType.EntityAnchor.EYES, mc.targetedEntity);
-        mc.player.dropSelectedItem(true);
+        if (mc.player.isTouchingWater());
+            mc.player.dropSelectedItem(true);
         super.onTick();
     }
 }
