@@ -15,7 +15,6 @@ public class AutoSwim extends Mod {
     public void onTick() {
         if (mc.player.isTouchingWater())
         mc.player.setPose(EntityPose.SWIMMING);
-        mc.player.updateSwimming();
         super.onTick();
     }
 }
